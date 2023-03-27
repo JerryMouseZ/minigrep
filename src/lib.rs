@@ -19,8 +19,7 @@ pub fn parse_config(args: &[String]) -> Config {
 
 pub fn run(config: Config) -> Result<(), Box<dyn Error>> {
     let contents = fs::read_to_string(config.file_path)?;
-    let results = 
-    if config.ignore_case {
+    let results = if config.ignore_case {
         search_insensitive(&config.query, &contents)
     } else {
         search(&config.query, &contents)
